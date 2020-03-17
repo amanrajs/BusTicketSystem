@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const ticketSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
-    seat_id: { type: Number },
-    type: { type: String},
-    status: { type: Number, default: 0 },
+    Name: { type: String },
+    Gender: { type: String},
+    Age: { type: Number},
     owner_id:{type :Number}
 });
 

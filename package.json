@@ -4,7 +4,8 @@
   "description": "demo project in noddejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [
     "node",
@@ -19,5 +20,8 @@
     "body-parser": "^1.18.2",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
