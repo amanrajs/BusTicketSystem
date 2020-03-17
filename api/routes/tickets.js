@@ -7,7 +7,7 @@ const authorisechecked =require("../middleware/checkAuth");
 
 router.get("/", (req, res, next) => {
     Ticket.find()
-    .select("type status seat_id _id")
+    .select("type status seat_id _id owner_id")
     .exec()
     .then(docs => {
       const response = {
@@ -138,7 +138,7 @@ router.get("/closed", (req, res, next) => {
 //     });
 // });
 
-router.get("/:ticketId", authorisechecked, (req, res, next) => {
+router.get("/:ticketId", (req, res, next) => {
   const id = req.params.ticketId;
   Ticket.findById(id)
     .select('type status seat_id owner_id')
@@ -167,7 +167,13 @@ router.get("/:ticketId", authorisechecked, (req, res, next) => {
 
 router.patch("/:ticketId", authorisechecked, (req, res, next) => {
   const id = req.params.ticketId;
-  Ticket.update({ _id: id }, { $set: {status:req.body.status} })
+  const userData=req.userData;
+  Ticket.findById(id)
+  .exec()
+  .then(user => {
+      console.log(!user.owner_id);
+    if (user.owner_id ==userData.userId ||  !user.owner_id ) {
+        Ticket.update({ _id: id }, { $set: {status:req.body.status,owner_id:userData.userId} })
     .exec()
     .then(result => {
       res.status(200).json({
@@ -184,6 +190,14 @@ router.patch("/:ticketId", authorisechecked, (req, res, next) => {
         error: err
       });
     });
+   
+    }
+    else{
+          res.status(409).json({
+        message: "Forbidden operation"
+    });
+    }
+})
 });
 
 // router.delete("/:productId", (req, res, next) => {

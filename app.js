@@ -2,17 +2,10 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose")
-
-// app.use((req, res, next) => {
-//     res.status(200).json({
-//         message: 'It works!'
-//     });
-// });
-
+const mongoose = require("mongoose");
 const ticketRoutes = require("./api/routes/tickets");
-// const orderRoutes = require("./api/routes/orders");
 const userRoutes=require("./api/routes/user");
+const resetRoute=require("./api/routes/reset");
 
 mongoose.connect(
     "mongodb+srv://aman:aman@cluster0-ccacx.mongodb.net/test?retryWrites=true&w=majority",
@@ -41,6 +34,10 @@ app.use((req, res, next) => {
 app.use("/tickets", ticketRoutes);
 //app.use("/orders", orderRoutes);
 app.use("/user", userRoutes);
+
+app.use("/reset", resetRoute);
+
+
 
 
 app.use((req, res, next) => {

@@ -73,7 +73,7 @@ router.post("/login", (req, res, next) => {
             },
             process.env.SECRET_KEY,
             {
-                expiresIn: "1h"
+                expiresIn: "2h"
             }
           );
           return res.status(200).json({
@@ -92,6 +92,32 @@ router.post("/login", (req, res, next) => {
         error: err
       });
     });
+});
+
+router.get('/details/:userId',(req,res,next)=>{
+    const id = req.params.userId;
+    User.findById(id)
+      .select('name age gender')
+      .exec()
+      .then(doc => {
+        if (doc) {
+          res.status(200).json({
+              User: doc,
+              request: {
+                  type: 'GET',
+                  url: 'http://localhost:3000/products'
+              }
+          });
+        } else {
+          res
+            .status(404)
+            .json({ message: "No valid entry found for provided ID" });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
 });
 
 module.exports = router;
