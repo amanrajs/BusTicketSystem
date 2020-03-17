@@ -12,6 +12,7 @@ const mongoose = require("mongoose")
 
 const ticketRoutes = require("./api/routes/tickets");
 // const orderRoutes = require("./api/routes/orders");
+const userRoutes=require("./api/routes/user");
 
 mongoose.connect(
     "mongodb+srv://aman:aman@cluster0-ccacx.mongodb.net/test?retryWrites=true&w=majority",
@@ -39,6 +40,8 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use("/tickets", ticketRoutes);
 //app.use("/orders", orderRoutes);
+app.use("/user", userRoutes);
+
 
 app.use((req, res, next) => {
   const error = new Error("Not found");

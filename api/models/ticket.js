@@ -5,7 +5,7 @@ const ticketSchema = mongoose.Schema({
     seat_id: { type: Number },
     type: { type: String},
     status: { type: Number, default: 0 },
-    owner_id:{type :Number}
+    owner_id:{type :mongoose.Schema.Types.ObjectId ,ref:'User'}
 });
 
 module.exports = mongoose.model('ticket', ticketSchema);

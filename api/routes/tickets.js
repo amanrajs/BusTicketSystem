@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const Ticket = require("../models/Ticket");
+const authorisechecked =require("../middleware/checkAuth");
 
 router.get("/", (req, res, next) => {
     Ticket.find()
@@ -137,7 +138,7 @@ router.get("/closed", (req, res, next) => {
 //     });
 // });
 
-router.get("/:ticketId", (req, res, next) => {
+router.get("/:ticketId", authorisechecked, (req, res, next) => {
   const id = req.params.ticketId;
   Ticket.findById(id)
     .select('type status seat_id owner_id')
@@ -164,7 +165,7 @@ router.get("/:ticketId", (req, res, next) => {
     });
 });
 
-router.patch("/:ticketId", (req, res, next) => {
+router.patch("/:ticketId", authorisechecked, (req, res, next) => {
   const id = req.params.ticketId;
   Ticket.update({ _id: id }, { $set: {status:req.body.status} })
     .exec()
