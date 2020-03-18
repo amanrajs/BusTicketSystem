@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Ticket = require("../models/Ticket");
+const Ticket = require("../models/ticketModel");
 
 exports.get_all_ticket = (req, res, next) => {
     Ticket.find()
