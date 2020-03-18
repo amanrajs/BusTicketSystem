@@ -36,7 +36,7 @@ exports.user_signup = (req, res, next) => {
                                     message: "User created",
                                     request: {
                                         type: 'POST',
-                                        url: 'http://localhost:3000/user/login'
+                                        url: 'http://52.66.145.252:3000/user/login'
                                     }
                                 });
                             })
@@ -61,7 +61,7 @@ exports.user_login = (req, res, next) => {
                     message: "Auth failed",
                     request: {
                         type: 'POST',
-                        url: 'http://localhost:3000/user/signup'
+                        url: 'http://52.66.145.252:3000/user/signup'
                     }
                 });
             }
@@ -71,7 +71,7 @@ exports.user_login = (req, res, next) => {
                         message: "Auth failed",
                         request: {
                             type: 'POST',
-                            url: 'http://localhost:3000/user/signup'
+                            url: 'http://52.66.145.252:3000/user/signup'
                         }
                     });
                 }
@@ -95,7 +95,7 @@ exports.user_login = (req, res, next) => {
                     message: "Auth failed",
                     request: {
                         type: 'POST',
-                        url: 'http://localhost:3000/user/signup'
+                        url: 'http://52.66.145.252:3000/user/signup'
                     }
                 });
             });
@@ -119,7 +119,7 @@ exports.get_user_details = (req, res, next) => {
                     User: doc,
                     request: {
                         type: 'GET',
-                        url: 'http://localhost:3000/tickets'
+                        url: 'http://52.66.145.252:3000/tickets'
                     }
                 });
             } else {

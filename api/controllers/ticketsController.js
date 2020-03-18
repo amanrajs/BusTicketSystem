@@ -18,7 +18,7 @@ exports.get_all_ticket = (req, res, next) => {
                         seat_id: doc.seat_id,
                         request: {
                             type: "GET",
-                            url: "http://localhost:3000/tickets/" + doc._id
+                            url: "http://52.66.145.252:3000/tickets/" + doc._id
                         }
                     };
                 })
@@ -50,12 +50,12 @@ exports.get_all_open_tickets = (req, res, next) => {
                         request: {
                             type: "GET",
                             use: "view details of a ticket",
-                            url: "http://localhost:3000/tickets/" + doc._id
+                            url: "http://52.66.145.252:3000/tickets/" + doc._id
                         },
                         request: {
                             type: "GET",
                             use: "view owner details",
-                            url: "http://localhost:3000/user/details" + doc.owner_id
+                            url: "http://52.66.145.252:3000/user/details" + doc.owner_id
                         }
                     };
                 })
@@ -87,12 +87,12 @@ exports.get_all_closed_tickets = (req, res, next) => {
                         request: {
                             type: "PATCH",
                             use: "Book a seat by specifying ticket id",
-                            url: "http://localhost:3000/tickets/" + doc._id
+                            url: "http://52.66.145.252:3000/tickets/" + doc._id
                         },
                         request: {
                             type: "GET",
                             use: "view owner details",
-                            url: "http://localhost:3000/user/details" + doc.owner_id
+                            url: "http://52.66.145.252:3000/user/details" + doc.owner_id
                         }
                     };
                 })
@@ -119,7 +119,7 @@ exports.get_ticket_details = (req, res, next) => {
                     request: {
                         type: "GET",
                         use: "view owner details",
-                        url: "http://localhost:3000/user/details" + doc.owner_id
+                        url: "http://52.66.145.252:3000/user/details" + doc.owner_id
                     }
                 });
             } else {
@@ -155,12 +155,12 @@ exports.book_or_cancel_ticket = (req, res, next) => {
                             request: {
                                 type: "GET",
                                 use: "view owner details",
-                                url: "http://localhost:3000/user/details" +user.owner_id
+                                url: "http://52.66.145.252:3000/user/details" +user.owner_id
                             },
                             request: {
                                 type: "GET",
                                 use: "view all tickets",
-                                url: "http://localhost:3000/tickets/"
+                                url: "http://52.66.145.252:3000/tickets/"
                             }
                         });
                     })
