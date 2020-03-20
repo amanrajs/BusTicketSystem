@@ -7,7 +7,7 @@ const ticketRoutes = require("./api/routes/tickets");
 const userRoutes = require("./api/routes/user");
 const resetRoute = require("./api/routes/reset");
 mongoose.connect(
-    "mongodb+srv://aman:"+process.env.MONGO_ATLAS_PW+"@cluster0-ccacx.mongodb.net/test?retryWrites=true&w=majority",
+    "mongodb+srv://aman:aman@cluster0-ccacx.mongodb.net/test?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.Promise = global.Promise;

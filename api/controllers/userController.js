@@ -81,7 +81,7 @@ exports.user_login = (req, res, next) => {
                             email: user[0].email,
                             userId: user[0]._id
                         },
-                        process.env.SECRET_KEY,
+                        "itsasecret",
                         {
                             expiresIn: "2h"
                         }
