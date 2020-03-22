@@ -55,7 +55,7 @@ exports.get_all_open_tickets = (req, res, next) => {
                         request: {
                             type: "GET",
                             use: "view owner details",
-                            url: "http://52.66.145.252:3000/user/details" + doc.owner_id
+                            url: "http://52.66.145.252:3000/user/details/" + doc.owner_id
                         }
                     };
                 })
@@ -92,7 +92,7 @@ exports.get_all_closed_tickets = (req, res, next) => {
                         request: {
                             type: "GET",
                             use: "view owner details",
-                            url: "http://52.66.145.252:3000/user/details" + doc.owner_id
+                            url: "http://52.66.145.252:3000/user/details/" + doc.owner_id
                         }
                     };
                 })
@@ -119,7 +119,7 @@ exports.get_ticket_details = (req, res, next) => {
                     request: {
                         type: "GET",
                         use: "view owner details",
-                        url: "http://52.66.145.252:3000/user/details" + doc.owner_id
+                        url: "http://52.66.145.252:3000/user/details/" + doc.owner_id
                     }
                 });
             } else {
@@ -155,7 +155,7 @@ exports.book_or_cancel_ticket = (req, res, next) => {
                             request: {
                                 type: "GET",
                                 use: "view owner details",
-                                url: "http://52.66.145.252:3000/user/details" +user.owner_id
+                                url: "http://52.66.145.252:3000/user/details/" +user.owner_id
                             },
                             request: {
                                 type: "GET",
